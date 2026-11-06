@@ -1,0 +1,3 @@
+# Frozen scientific source hashes include original line endings.
+# Preserve bytes on Windows and Linux; do not let core.autocrlf rewrite them.
+* -text

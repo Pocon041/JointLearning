@@ -1,0 +1,156 @@
+{
+  "seed": 42,
+  "device": "cuda",
+  "batch_size": 4,
+  "workers": 4,
+  "amp": true,
+  "eval_amp": true,
+  "epochs": 30,
+  "steps_per_epoch": 1153,
+  "lr": 0.0002,
+  "weight_decay": 0.01,
+  "warmup_epochs": 0.29829545454545453,
+  "min_lr": 1e-06,
+  "min_lr_ratio": 0.01,
+  "max_grad_norm": 5.0,
+  "cod_weight": 1.0,
+  "iml_weight": 1.0,
+  "boundary_weight": 0.0,
+  "evaluate_test": true,
+  "cod_metrics": true,
+  "auroc_bins": 4096,
+  "selection_metric": {
+    "cod": "smeasure",
+    "iml": "tampered_f1"
+  },
+  "log_interval": 25,
+  "shared_lr": 0.0002,
+  "cod_private_lr": 0.0002,
+  "iml_private_lr": 0.0005,
+  "warmup_start_factor": 0.1,
+  "clip_mode": "global",
+  "input_geometry": {
+    "cod": {
+      "max_side": 512,
+      "resize_mode": "fit",
+      "bucket_step": 64
+    },
+    "iml": {
+      "max_side": 512,
+      "resize_mode": "native",
+      "bucket_step": 64
+    }
+  },
+  "size": {
+    "cod": [
+      352,
+      352
+    ],
+    "iml": [
+      256,
+      256
+    ]
+  },
+  "iml_dice_weight": 0.0,
+  "model_variant": "evp_joint_v3",
+  "casia_evaluation_runner_sha256": "0d420a735a977c8c3c75761950d89e3d80e11c51341e0d81f6b8906c30e75298",
+  "experiment_scope": "Full cached training pools: 2723 COD/4610 tampered CASIA; 30 epochs; three matched private-stage-exit/shared-task-Adam arms; cold generic initialization; fixed validation and held-out tests only after training",
+  "loss_protocol": {
+    "cod": "valid-pixel image-mean BCE+IoU",
+    "iml": "valid-pixel image-mean BCE"
+  },
+  "checkpoint_protocol": "preserve every complete epoch plus last and primary-validation best; retain all learned factors and task-wise optimizer histories",
+  "initialization_protocol": "fresh matching generic ImageNet MiT-B4; newly initialized EVP prompts/heads/shared QKV/private stage exits; no expanded or Quick task-trained weights",
+  "arm": "joint",
+  "model": {
+    "enhancement": "evp",
+    "sharing": "all_private",
+    "frequency_enabled": true,
+    "frequency_fusion": "sum",
+    "attention_lora_rank": 8,
+    "attention_lora_alpha": 8.0,
+    "freeze_backbone": true,
+    "checkpoint_blocks": true,
+    "reference_img_size": 352,
+    "private_stage_exits": true,
+    "exit_rank": 4,
+    "exit_alpha": 4.0
+  },
+  "archive_epoch_checkpoints": true,
+  "shared_optimizer": "task_adamw_sum",
+  "accuracy_interpretation": "Report matched per-epoch, final and best-validation comparisons; fixed0.5 F1, macro AUC, oracle F1 diagnostic, FPR/recall; no threshold changes or test-driven selection",
+  "test_protocol": "after each arm completes 30 epochs, evaluate final and corresponding best-validation checkpoint; no test-driven threshold, epoch or model selection",
+  "frozen_package_sources": {
+    "cod_iml_evp_bridge_v1": {
+      "__init__.py": "2362ff4a4fd1455d43af97ef9eb7125eb45acbd30f866ba867405aeba435ed62",
+      "model.py": "4bde70644dbe9e3d2fa8e27bf631984f9e5ada8e37b167dc2d6da2d5a6df554c",
+      "modules.py": "248abe9367ebe7215a226ec25421ce0a5f652042875dc529a71efd6ae11879cb"
+    },
+    "cod_iml_evp_bridge_v2": {
+      "__init__.py": "e2e83fa0a571e5f8d92dcfd896e5fae9839eeb1404c80a5b459a0b83b9ca757a",
+      "engine.py": "f9ef03a5161e10fd6dacd62de98585cd53649a851232eea566d3bf06245f02d4",
+      "model.py": "158dcb4d278443935dfc587084cb920d734256456b1f1e0d970719ab657ee4d1",
+      "modules.py": "473bd87cf1822227da81ba1a0c6d9c7a7e3f91bd71379a3a04b0a913365e31bb"
+    },
+    "cod_iml_evp_full_image": {
+      "__init__.py": "bd0117e46628fcfc796468848bbab57bdb008d84c57d6763f1fa977b81c0bd39",
+      "data.py": "168bd5918c64e417f6e5449a11bcfd514d1b0ca42b5538aa044064cce4c3ffd8",
+      "engine.py": "6eec22dfddf314d463803e4a77911fb4517e1ab5bf60696296a6236767074b93",
+      "fusion.py": "2b18fe40da15581e85427cb04d0c4e9bbbc90558ec3539520c7676026689f859",
+      "geometry.py": "f7e603e7642305e29c0a4293d40d4f9dce2983db1d5974ef03cbf4be27ac0be2",
+      "lora.py": "6e2990fc2e63916fa94e85f238b71d5f240eaff988f2f1a623d59a9a2fa507c1",
+      "losses.py": "06ac03f5bba5f4bc02ffe2a7fb41a01eee227f6412bceb17ec3cff8f82529b03"
+    },
+    "cod_iml_evp_joint_v3": {
+      "__init__.py": "173c9a06297d90f954563b39dea08eb65faa493eb006a2dddf51b9fd668b7203",
+      "audit.py": "4f74216a01fef1c1e64c201ea7e9c189fe422cad6ab2a13c840687718968f6ba",
+      "engine.py": "2a5e358e7e443b3e38311384d2094983fc14d98a45f3b30d079894e614da82c4",
+      "model.py": "fa4a1582a770f8664d25a5cf5c21ab553c5bc4378c939d00ee670813a3d4680b",
+      "optimizer.py": "49766f4e2895ebf7ea8f88147985042f61812f82814cbf7721c223aa91a6008e",
+      "train.py": "c762f8dcec02e960b879d4d4b7afa8da5b5843693df009dbd9b532db33a67c94"
+    },
+    "cod_iml_evp_official_aligned": {
+      "__init__.py": "f2b499db25cb19964e7387bc0a7b19d8d9fc8fc43eb712439a48159a47c1f7c3",
+      "engine.py": "f35b0e01dee6015eb1ef11e72bf733fdf5ed8f75204f71d9d33748d32de99d55",
+      "model.py": "fdd55d470dd9e9768a6e00819e90030da00f779a972eb80c543aa9094247b9e8",
+      "operators.py": "c35e50e62cf526271cc965eb4e5882fa4bd7d25814823a32a6ebc0b8f2544ea0",
+      "vendor_evp.py": "0b38f3acd9e7640bb91068d714f5aa8ffad5f0a145d131f5373313a3cf320d3f"
+    },
+    "cod_iml_evp_reference": {
+      "__init__.py": "47626799b1eb7b56a647bb1165469c93b8351e50f6d62e3e59015309033e80a9",
+      "audit.py": "c31972d1c1e624db9f72618e14f58bc311b04f4a0a0608cbaaaa2d36a4adb151",
+      "model.py": "a77bbfd5df89c22989f096be4012d13a5a45d03cd6c395d4dc51ae3288c07eac",
+      "train.py": "47c51ff0631e1c1f9ff897269fb00b56b3fedbdd69be6da62941ebd53c3259dc"
+    },
+    "cod_iml_evp_training_v2": {
+      "__init__.py": "1e9bcfd570552eca8b3e7e2f4b20ca0d7e0b3260df985181993c2c58b85fc3d6",
+      "strategy.py": "424846e68e919aea06b8a56498e4df2ff75d5704fb80053087aa4f8a9308f4d1"
+    },
+    "cod_iml_joint": {
+      "__init__.py": "1c76ca059fcc8d515750c5e9f66b1437c1c780a052c9ff8ae8dde7ba0cee1971",
+      "blocks.py": "8a807fd9614a84400b31383d898fb219522db8f3f6b9a150f4cd35d0e3e60a11",
+      "data.py": "d79b6bc74366cd393cb2cdd64e31d0134ec75684bf356dac3088f7f9ea7d5152",
+      "decoders.py": "bf2e4271154760ba3ff4314f8979c917d21855a875d37b706f569e0ba3880f09",
+      "encoders.py": "165a810d3125c04a94b90b594e181f6badb7cdd40073f4761c53fe4a8dc8e6db",
+      "engine.py": "aea393671a4035d579fc147c7fcf09ecd1117b56090594fd75f2fd3da805d66e",
+      "frequency.py": "0b8bc3afa4a35d5b561ae7102bc3180fa8334e2c842f64ab4854b815a52b7eeb",
+      "losses.py": "cf016fdf9b11950070390bf5c24d3b1337150118b1901f3c9ac31098de14518b",
+      "metrics.py": "646a5601cee53bac9bb50bbb60e7c6a3cd53f977254acef0fe2bd4789a961d6b",
+      "model.py": "61b82ac1458b37920be6bf4bd8b0bd6d9163807b8e0d8234abf5ded6f829b06e"
+    }
+  },
+  "data": {
+    "cod": {
+      "train": "../../data/manifests/cod/train_full.jsonl",
+      "val": "../../data/manifests/cod/val.jsonl",
+      "test": "../../data/manifests/cod/test.jsonl"
+    },
+    "iml": {
+      "train": "../../data/manifests/iml/train_full.jsonl",
+      "val": "../../data/manifests/iml/val.jsonl",
+      "test": "../../data/manifests/iml/test.jsonl"
+    }
+  },
+  "spatial_pretrained": "../../weights/mit_b4.pth",
+  "output_dir": "../../runs/full/both_joint"
+}

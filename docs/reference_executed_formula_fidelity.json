@@ -1,0 +1,25 @@
+{
+  "author_adatask_sum_9_steps_max_error": 0.0,
+  "private_exit_linear_formula_max_error": 8.881784197001252e-16,
+  "scope": "Adam sum and individual task readout projection agree with author code; full model remains an explicit EVP adaptation, not a Swin MTLoRA reproduction",
+  "sources": [
+    {
+      "name": "mtlora_lora.py",
+      "url": "https://raw.githubusercontent.com/scale-lab/MTLoRA/main/models/lora.py",
+      "sha256": "49353fbb0785e0f0e73c3f9d1eabfd369501fc48e43a46ddd205ec366ea27bae",
+      "bytes": 32119
+    },
+    {
+      "name": "mtlora_swin.py",
+      "url": "https://raw.githubusercontent.com/scale-lab/MTLoRA/main/models/swin_transformer_mtlora.py",
+      "sha256": "5049f6488d386737af965c5f814f8c6d7a023bd69b719f211b8cc655741705e5",
+      "bytes": 34235
+    },
+    {
+      "name": "adatask.py",
+      "url": "https://raw.githubusercontent.com/EnnengYang/AdaTask/master/adatask.py",
+      "sha256": "5f6a275a73b206536cbc9af71b31702a4d49dbd9673e38fe0b7a9bff5b7c2038",
+      "bytes": 5343
+    }
+  ]
+}

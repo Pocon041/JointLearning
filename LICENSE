@@ -1,0 +1,14 @@
+JointLearning research source snapshot
+
+This distribution contains material subject to multiple source notices.
+No blanket MIT, Apache, or other permissive license is asserted for the repository.
+
+The EVP/SegFormer-derived code retains the NVIDIA Source Code License, including
+its non-commercial research/evaluation limitation. The complete license is in:
+    cod_iml_evp_official_aligned/NVIDIA_LICENSE.txt
+
+The EVP repository's BSD 3-Clause notice is retained in:
+    cod_iml_evp_official_aligned/EVP_LICENSE.txt
+
+For original project-specific material, this initial snapshot specifies no
+additional license grant. See THIRD_PARTY_NOTICES.md for source scope and changes.
